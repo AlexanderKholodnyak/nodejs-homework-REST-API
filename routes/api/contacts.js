@@ -5,6 +5,7 @@ const {
   getContactById,
   removeContact,
   addContact,
+  updateContact,
 } = require('../../model/index.js')
 
 
@@ -84,31 +85,38 @@ router.delete('/:id', async (req, res, next) => {
   }
 })
 
-router.patch('/:contactId', async (req, res, next) => {
-  // '/:id/vaccinated',
-  // validate.updateStatusCat,
-  // async (req, res, next) => {
-  //   try {
-  //     const cat = await Cats.update(req.params.id, req.body)
-  //     if (cat) {
-  //       return res.json({
-  //         status: 'success',
-  //         code: 200,
-  //         data: {
-  //           cat,
-  //         },
-  //       })
-  //     } else {
-  //       return res.status(404).json({
-  //         status: 'error',
-  //         code: 404,
-  //         data: 'Not Found',
-  //       })
-  //     }
-  //   } catch (e) {
-  //     next(e)
-  //   }
-  // },
-})
+router.patch("/:contactId", async (req, res, next) => {
+  try {
+    if (Object.keys(req.body).length === 0) {
+      return res.status(400).json({
+        status: "missing fields",
+        code: 400,
+      });
+    }
+
+    const contact = await updateContact(
+      req.params.contactId,
+      req.body
+    );
+
+    if (contact) {
+      return res.json({
+        status: "success",
+        code: 200,
+        data: {
+          contact,
+        },
+      });
+    } else {
+      return res.status(404).json({
+        status: "error",
+        code: 404,
+        data: "Not Found",
+      });
+    }
+  } catch (e) {
+    next(e);
+  }
+});
 
 module.exports = router

@@ -44,7 +44,24 @@ const addContact = async (body) => {
   return newContact;
 };
 
-const updateContact = async (contactId, body) => {}
+const updateContact = async (contactId, body) => {
+  data = await fs.readFile(contactsPath, "utf-8");
+  const contacts = JSON.parse(data);
+  const contact = contacts.find((contact) => String(contact.id) === contactId);
+
+  const newContact = { ...contact, ...body };
+  const newListContacts = contacts.map((obj) =>
+    String(obj.id) === contactId ? newContact : obj
+  );
+
+  await fs.writeFile(
+    contactsPath,
+    JSON.stringify(newListContacts, null, 2),
+    "utf8"
+  );
+
+  return newContact;
+};
 
 module.exports = {
   listContacts,
