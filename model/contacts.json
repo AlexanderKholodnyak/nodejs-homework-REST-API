@@ -58,5 +58,23 @@
     "name": "Alec Howard",
     "email": "Donec.elementum@scelerisquescelerisquedui.net",
     "phone": "(748) 206-2688"
+  },
+  {
+    "id": "49550e29-cbd8-488a-abf8-257d6ca5fccf",
+    "name": "Lee Harvey Oswald",
+    "email": "lee.oswald@vestibul.co.uk",
+    "phone": "(992) 914-3792"
+  },
+  {
+    "id": "96e394bb-e1e2-49ee-8ab7-aea940f37b74",
+    "name": "John F. Kennedy",
+    "email": "kennedy@murder.co.uk",
+    "phone": "(992) 9999999"
+  },
+  {
+    "id": "b60fd547-2e59-4bd3-9154-da431ba3b853",
+    "name": "Donald Trump",
+    "email": "donaldduck@killed.uk",
+    "phone": "0123456789"
   }
 ]
